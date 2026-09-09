@@ -15,7 +15,7 @@
   --warm-100: #f4f0e8;
   --slate-900: #182933;
   --slate-700: #465b69;
-  --slate-500: #71818c;
+  --slate-500: #596b76;
   --slate-300: #cbd5da;
   --white: #fff;
   --font-display: 'Manrope', system-ui, sans-serif;
@@ -224,6 +224,17 @@ details[open] summary svg { transform: rotate(180deg); }
 .metrics-grid h3 { margin-bottom: 9px; font-size: .85rem; line-height: 1.35; }
 .metrics-grid p { margin: 0; font-size: .72rem; line-height: 1.45; }
 
+.product-overview { border-bottom: 1px solid #dbe3e5; }
+.overview-grid { display: grid; gap: 70px; grid-template-columns: .9fr 1.1fr; }
+.overview-grid h2 { margin: 0; font-size: clamp(2rem, 3.7vw, 3.25rem); }
+.overview-copy p { font-size: 1.04rem; }
+.overview-copy p:last-child { margin-bottom: 0; }
+.buyer-questions { display: grid; margin-top: 62px; gap: 1px; overflow: hidden; border: 1px solid #d5e0e2; border-radius: var(--radius-md); background: #d5e0e2; grid-template-columns: repeat(3, 1fr); }
+.buyer-questions article { padding: 28px; background: var(--warm-50); }
+.buyer-questions span { color: var(--teal-700); font-size: .7rem; font-weight: 800; letter-spacing: .12em; }
+.buyer-questions h3 { margin: 14px 0 9px; font-size: 1.18rem; }
+.buyer-questions p { margin: 0; font-size: .86rem; }
+
 .explorer { display: grid; gap: 34px; grid-template-columns: minmax(260px, .85fr) minmax(0, 1.5fr); }
 .explorer__controls { display: flex; gap: 6px; flex-direction: column; }
 .explorer__button {
@@ -283,6 +294,7 @@ details[open] summary svg { transform: rotate(180deg); }
 .section--dashboard .section-intro h2 { color: var(--white); }
 .section--dashboard .section-intro p { color: #b8cbd5; }
 .dashboard-shell { overflow: hidden; border: 1px solid #cbd5d9; border-radius: var(--radius-md); background: #f7f9fa; box-shadow: var(--shadow-lg); }
+.dashboard-loading { display: grid; min-height: 300px; border: 1px solid #365069; border-radius: var(--radius-md); color: #c5d5dd; place-items: center; }
 .dashboard-topline { display: flex; padding: 13px 18px; align-items: center; justify-content: space-between; color: #3c5664; background: var(--white); font-size: .75rem; font-weight: 700; }
 .dashboard-topline > div { display: flex; align-items: center; gap: 8px; }
 .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green-500); }
@@ -340,7 +352,7 @@ details[open] summary svg { transform: rotate(180deg); }
 .adoption-block > p { max-width: 950px; margin: 28px auto 0; text-align: center; }
 .product-model .three-grid article { border-top: 4px solid var(--slate-300); }
 .product-model .three-grid article.is-featured { border-top-color: var(--teal-600); background: #f2faf8; }
-.card-number { position: absolute; top: 26px; right: 28px; color: #9aabb3; font-size: .7rem; letter-spacing: .1em; }
+.card-number { position: absolute; top: 26px; right: 28px; color: #5f737e; font-size: .7rem; letter-spacing: .1em; }
 .product-model .check-list li { font-size: .87rem; }
 
 .production-section { background: linear-gradient(130deg, #071b30 0%, #162c4e 100%); }
@@ -363,6 +375,7 @@ details[open] summary svg { transform: rotate(180deg); }
 .closing-cta { position: relative; padding: 100px 0; overflow: hidden; color: var(--white); background: var(--teal-700); }
 .closing-cta::after { position: absolute; top: -60%; right: -10%; width: 650px; height: 650px; border: 1px solid rgba(255,255,255,.16); border-radius: 50%; content: ''; }
 .closing-cta .container { position: relative; z-index: 1; }
+.closing-cta .eyebrow { color: var(--white); }
 .closing-cta h2 { max-width: 950px; }
 .closing-cta p:not(.eyebrow) { max-width: 780px; color: #dbf3f0; font-size: 1.1rem; }
 .closing-cta .button-row { margin-top: 32px; }
@@ -401,6 +414,8 @@ footer { padding: 50px 0; color: var(--white); background: #04111f; }
   .section { padding: 86px 0; }
   .hero { padding-top: 85px; }
   .hero__grid, .rsa-heading, .split-grid, .production-grid { grid-template-columns: 1fr; }
+  .overview-grid { gap: 35px; grid-template-columns: 1fr; }
+  .buyer-questions { grid-template-columns: 1fr; }
   .hero-journey { max-width: 620px; }
   .proof-list { flex-wrap: wrap; }
   .explorer { grid-template-columns: 1fr; }

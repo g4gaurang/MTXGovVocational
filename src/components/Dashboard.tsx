@@ -68,7 +68,11 @@ export function Dashboard() {
             <h3>{view.title} snapshot</h3>
             <span>Illustrative</span>
           </div>
-          <div className="chart-visual" aria-hidden="true">
+          <div
+            className="chart-visual"
+            role="img"
+            aria-label={`${view.title} illustrative bar chart. A text data table follows for screen-reader users.`}
+          >
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={view.chart} margin={{ top: 8, right: 8, left: -20, bottom: 8 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#d9e1e7" />

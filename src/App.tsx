@@ -9,7 +9,7 @@ import {
   Network,
   Sparkles,
 } from 'lucide-react'
-import { Dashboard } from './components/Dashboard'
+import { lazy, Suspense } from 'react'
 import { Explorer } from './components/Explorer'
 import { Header } from './components/Header'
 import { HeroJourney } from './components/HeroJourney'
@@ -28,6 +28,8 @@ import {
   securityItems,
   serviceModels,
 } from './data/content'
+
+const Dashboard = lazy(() => import('./components/Dashboard').then((module) => ({ default: module.Dashboard })))
 
 const SectionIntro = ({ eyebrow, title, copy }: { eyebrow: string; title: string; copy?: string }) => (
   <div className="section-intro">
@@ -95,6 +97,26 @@ function App() {
           </div>
         </section>
 
+        <section className="section product-overview">
+          <div className="container">
+            <div className="overview-grid">
+              <div>
+                <p className="eyebrow">MTX Gov Vocational</p>
+                <h2>Modern vocational rehabilitation case management—built around participant employment outcomes.</h2>
+              </div>
+              <div className="overview-copy">
+                <p>MTX Gov Vocational is a configurable Vocational Rehabilitation Case Management System designed for State Vocational Rehabilitation Agencies. It supports the participant journey from referral and application through eligibility, assessment, IPE development, service authorization, provider delivery, fiscal management, employment outcomes and case closure. It also supports Pre-ETS, participant and provider digital experiences, document management, communications, approvals, operational dashboards and federal reporting.</p>
+                <p>Built on Salesforce Government Cloud, MTX Gov Vocational gives agencies a VR-specific product foundation rather than requiring them to design each capability from an empty platform. The product includes a reusable VR data model, preconfigured workflows, configurable policy rules, role structures, reporting components, portal patterns, integration patterns and RSA-911 capabilities. Agencies can configure these assets around their policies, organizational structures and operating models as federal requirements, state policy and program needs evolve.</p>
+              </div>
+            </div>
+            <div className="buyer-questions" aria-label="Questions the product page addresses">
+              <article><span>01</span><h3>Does it understand VR?</h3><p>See how the product supports the specialized lifecycle, fiscal operations and federal-reporting environment.</p></article>
+              <article><span>02</span><h3>Will it improve daily work?</h3><p>Explore participant, counselor and provider experiences alongside operational and data-quality visibility.</p></article>
+              <article><span>03</span><h3>Can the agency adapt it?</h3><p>Understand how a reusable foundation can be configured, implemented and operated with manageable risk.</p></article>
+            </div>
+          </div>
+        </section>
+
         <section className="section section--warm" id="challenges">
           <div className="container">
             <SectionIntro
@@ -132,7 +154,7 @@ function App() {
           <div className="container">
             <SectionIntro
               eyebrow="Product capabilities"
-              title="A connected VR product foundation, configured for each agency."
+              title="A complete VR product foundation, configured for each agency."
               copy="Reusable case, fiscal, engagement and reporting capabilities provide a product starting point while preserving room for state policy and operating-model configuration."
             />
             <Explorer items={capabilities} label="Product capability families" />
@@ -170,7 +192,9 @@ function App() {
               title="Turn case activity into operational visibility."
               copy="Focused views help counselors, program leaders, fiscal teams and reporting staff understand current conditions without crowding the screen."
             />
-            <Dashboard />
+            <Suspense fallback={<div className="dashboard-loading" role="status">Loading illustrative dashboard…</div>}>
+              <Dashboard />
+            </Suspense>
           </div>
         </section>
 
